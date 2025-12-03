@@ -34,8 +34,8 @@ class GuzzleHTTPAdapter implements Http\Adapter\AdapterInterface
     private $pool;
 
     public function __construct(
-        Client\ClientOptions $options = null,
-        GuzzleHttp\HandlerStack $stack = null
+        ?Client\ClientOptions $options = null,
+        ?GuzzleHttp\HandlerStack $stack = null
     )
     {
         $this->options = $options ?: new Client\ClientOptions();
@@ -118,7 +118,7 @@ class GuzzleHTTPAdapter implements Http\Adapter\AdapterInterface
      *
      * @return \Closure
      */
-    private function createExceptionCallback(callable $callback = null)
+    private function createExceptionCallback(?callable $callback = null)
     {
         return function (GuzzleHttp\Exception\TransferException $exception) use ($callback) {
             if ($callback && $exception instanceof GuzzleHttp\Exception\RequestException && $exception->hasResponse()) {

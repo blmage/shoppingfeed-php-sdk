@@ -27,7 +27,7 @@ class RateLimitHandler
      * @param int                  $maxRetries
      * @param LoggerInterface|null $logger
      */
-    public function __construct($maxRetries = 3, LoggerInterface $logger = null)
+    public function __construct($maxRetries = 3, ?LoggerInterface $logger = null)
     {
         $this->maxRetries = (int) $maxRetries;
         $this->logger     = $logger;
@@ -40,7 +40,7 @@ class RateLimitHandler
      *
      * @return bool
      */
-    public function decide($count, RequestInterface $request, ResponseInterface $response = null)
+    public function decide($count, RequestInterface $request, ?ResponseInterface $response = null)
     {
         if (! $response || $count >= $this->maxRetries) {
             return false;

@@ -227,8 +227,8 @@ class HalLink
      */
     public function batchSend(
         $requests,
-        callable $success = null,
-        callable $error = null,
+        ?callable $success = null,
+        ?callable $error = null,
         array $options = [],
         $concurrency = 10
     )
@@ -289,7 +289,7 @@ class HalLink
      *
      * @return \Closure
      */
-    private function createResponseCallback(callable $callback = null)
+    private function createResponseCallback(?callable $callback = null)
     {
         return function (ResponseInterface $response) use ($callback) {
             if ($callback) {
@@ -304,7 +304,7 @@ class HalLink
      *
      * @return \Closure
      */
-    private function createExceptionCallback(callable $callback = null)
+    private function createExceptionCallback(?callable $callback = null)
     {
         return function (\Exception $exception) use ($callback) {
             call_user_func($callback, $exception);

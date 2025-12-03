@@ -20,7 +20,7 @@ class Client
      *
      * @return \ShoppingFeed\Sdk\Api\Session\SessionResource
      */
-    public static function createSession(CredentialInterface $credential, ClientOptions $options = null)
+    public static function createSession(CredentialInterface $credential, ?ClientOptions $options = null)
     {
         return (new self($options))->authenticate($credential);
     }
@@ -28,7 +28,7 @@ class Client
     /**
      * @param ClientOptions|null $options
      */
-    public function __construct(ClientOptions $options = null)
+    public function __construct(?ClientOptions $options = null)
     {
         if (null === $options) {
             $options = new ClientOptions();
